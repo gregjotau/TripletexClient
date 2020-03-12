@@ -71,3 +71,11 @@ class TripletexClient:
     def get_divisions(self):
         url = "{}/v2/division".format(self.host)
         return requests.request("GET", url, headers=self.headers_with_auth).json()
+
+    def get_accounts(self):
+        url = "{}/v2/ledger/account".format(self.host)
+        return requests.request("GET", url, headers=self.headers_with_auth).json()
+
+    def make_voucher(self,payload):
+        url = "{}/v2/ledger/voucher".format(self.host)
+        return requests.request("POST", url, data=json.dumps(payload), headers=self.headers_with_auth).json()
